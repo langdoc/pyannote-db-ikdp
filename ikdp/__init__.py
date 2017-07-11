@@ -46,8 +46,8 @@ class MyProtocol1(SpeakerDiarizationProtocol):
     def trn_iter(self):
 
         # absolute path to 'data' directory where annotations are stored
-        # Niko's comment: Points now to our project data directory
-        data_dir = op.join(op.dirname(op.realpath(__file__)), 'ikdp')
+
+        data_dir = op.join(op.dirname(op.realpath(__file__)), 'data')
 
         # in this example, we assume annotations are distributed in MDTM format.
         # this is obviously not mandatory but pyannote.parser conveniently
