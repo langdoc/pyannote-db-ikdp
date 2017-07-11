@@ -32,14 +32,14 @@ from setuptools import setup, find_packages
 
 setup(
     # replace "mydatabase" by the name of your database
-    name='pyannote.db.mydatabase',
+    name='pyannote.db.ikdp',
 
     # replace "MyDatabase" by the name of your database
-    description="MyDatabase plugin for pyannote-database",
+    description="IKDP plugin for pyannote-database",
 
     # replace with your information
-    author='Hervé Bredin',
-    author_email='bredin@limsi.fr',
+    author='Niko Partanen',
+    author_email='nikotapiopartanen@github.com',
 
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
@@ -47,7 +47,7 @@ setup(
 
     # replace "MyDatabase" by the new name of MyDatabase directory
     package_data={
-        'MyDatabase': [
+        'ikdp': [
             'data/*',
         ],
     },
@@ -71,6 +71,6 @@ setup(
     # replace MyDatabase by the name of your database (using CamelCase)
     entry_points="""
         [pyannote.database.databases]
-        MyDatabase=MyDatabase:MyDatabase
+        ikdp=ikdp:ikdp
     """
 )
