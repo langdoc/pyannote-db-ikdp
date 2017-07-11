@@ -46,13 +46,16 @@ class MyProtocol1(SpeakerDiarizationProtocol):
     def trn_iter(self):
 
         # absolute path to 'data' directory where annotations are stored
-        data_dir = op.join(op.dirname(op.realpath(__file__)), 'data')
+        # Niko's comment: Points now to our project data directory
+        data_dir = op.join(op.dirname(op.realpath(__file__)), 'ikdp')
 
         # in this example, we assume annotations are distributed in MDTM format.
         # this is obviously not mandatory but pyannote.parser conveniently
         # provides a built-in parser for MDTM files...
+        # Niko's comment: This can be later tested with reading ELAN files
+        # more directly with pympi
         annotations = MDTMParser().read(
-            op.join(data_dir, 'protocol1.train.mdtm'))
+            op.join(data_dir, 'ikdp.train.mdtm'))
 
         # iterate over each file in training set
         for uri in sorted(annotations.uris):
@@ -64,7 +67,7 @@ class MyProtocol1(SpeakerDiarizationProtocol):
             # to yield dictionary with the following fields:
             yield {
                 # name of the database class
-                'database': 'MyDatabase',
+                'database': 'ikdp',
                 # unique file identifier
                 'uri': uri,
                 # reference as pyannote.core.Annotation instance
