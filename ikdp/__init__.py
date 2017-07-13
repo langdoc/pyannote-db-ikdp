@@ -55,7 +55,7 @@ class MyProtocol1(SpeakerDiarizationProtocol):
         # Niko's comment: This can be later tested with reading ELAN files
         # more directly with pympi
         annotations = MDTMParser().read(
-            op.join(data_dir, 'ikdp.train.mdtm'))
+            op.join(data_dir, 'protocol1.train.mdtm'))
 
         # iterate over each file in training set
         for uri in sorted(annotations.uris):
@@ -97,11 +97,11 @@ class MyProtocol1(SpeakerDiarizationProtocol):
 # this is where we define each protocol for this database.
 # without this, `pyannote.database.get_protocol` won't be able to find them...
 
-class MyDatabase(Database):
-    """MyDatabase database"""
+class ikdp(Database):
+    """IKDP database"""
 
     def __init__(self, preprocessors={}, **kwargs):
-        super(MyDatabase, self).__init__(preprocessors=preprocessors, **kwargs)
+        super(ikdp, self).__init__(preprocessors=preprocessors, **kwargs)
 
         # register the first protocol: it will be known as
         # MyDatabase.SpeakerDiarization.MyFirstProtocol
