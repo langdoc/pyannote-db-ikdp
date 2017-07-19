@@ -86,13 +86,56 @@ class MyProtocol1(SpeakerDiarizationProtocol):
 
     def dev_iter(self):
         # here, you should do the same as above, but for the development set
-        for _ in []:
-            yield
+        # absolute path to 'data' directory where annotations are stored
+
+        data_dir = op.join(op.dirname(op.realpath(__file__)), 'data')
+
+        annotations = MDTMParser().read(
+            op.join(data_dir, 'protocol1.dev.mdtm'))
+
+        # iterate over each file in training set
+        for uri in sorted(annotations.uris):
+
+            # get annotations as pyannote.core.Annotation instance
+            annotation = annotations(uri)
+
+            # `trn_iter` (as well as `dev_iter` and `tst_iter`) are expected
+            # to yield dictionary with the following fields:
+            yield {
+                # name of the database class
+                'database': 'ikdp',
+                # unique file identifier
+                'uri': uri,
+                # reference as pyannote.core.Annotation instance
+                'annotation': annotation
+            }
+
 
     def tst_iter(self):
         # here, you should do the same as above, but for the test set
-        for _ in []:
-            yield
+        # absolute path to 'data' directory where annotations are stored
+
+        data_dir = op.join(op.dirname(op.realpath(__file__)), 'data')
+
+        annotations = MDTMParser().read(
+            op.join(data_dir, 'protocol1.test.mdtm'))
+
+        # iterate over each file in training set
+        for uri in sorted(annotations.uris):
+
+            # get annotations as pyannote.core.Annotation instance
+            annotation = annotations(uri)
+
+            # `trn_iter` (as well as `dev_iter` and `tst_iter`) are expected
+            # to yield dictionary with the following fields:
+            yield {
+                # name of the database class
+                'database': 'ikdp',
+                # unique file identifier
+                'uri': uri,
+                # reference as pyannote.core.Annotation instance
+                'annotation': annotation
+            }
 
 # this is where we define each protocol for this database.
 # without this, `pyannote.database.get_protocol` won't be able to find them...
