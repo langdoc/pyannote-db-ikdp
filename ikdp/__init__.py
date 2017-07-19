@@ -25,7 +25,7 @@
 
 # AUTHORS
 # Hervé BREDIN - http://herve.niderb.fr
-
+# Template customization to IKDP project data by Niko Partanen
 
 from ._version import get_versions
 __version__ = get_versions()['version']
